@@ -48,10 +48,10 @@ public class Projectile : MonoBehaviour
 
         transform.localScale = new Vector3(localScaleX, transform.localScale.y, transform.localScale.z);
         transform.Rotate(0f, 180f, 0f);
-       
     }
 
     private void Deactivate() {
         gameObject.SetActive(false);
     }
 }
+

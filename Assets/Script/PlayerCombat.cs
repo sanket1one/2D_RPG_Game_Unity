@@ -5,9 +5,11 @@ using UnityEngine;
 public class PlayerCombat : MonoBehaviour
 {
 
-    [SerializeField]private float attackCooldown;
+    [SerializeField] private float attackCooldown;
     [SerializeField] private Transform firePoint;
-    [SerializeField] private GameObject[] fireballs;
+/*    [SerializeField] private GameObject[] fireballs;*/
+    [SerializeField] private GameObject fireball;
+
     private Animator anim;
     private PlayerMovement playerMovement;
     private float cooldownTimer = Mathf.Infinity;
@@ -25,28 +27,21 @@ public class PlayerCombat : MonoBehaviour
             Attack();
         }
         cooldownTimer += Time.deltaTime;
+        // get input from player
+        // spawn a projectile
+        // where to spawn the projectile
+
     }
     private void Attack() {
         //Play an attack animation
 
         //Detect enemies in range of attack
         // damage  them 
+        Instantiate(fireball, firePoint.position, firePoint.rotation);
+
         anim.SetTrigger("attack");
         cooldownTimer = 0;
 
-        /*        fireballs[FindFireballs()].transform.position = firePoint.position;
-                fireballs[FindFireballs()].GetComponent<Projectile>().setDirection(transform.localScale.x);
-        */
-        fireballs[0].transform.position = firePoint.position;
-        fireballs[0].GetComponent<Projectile>().setDirection(Mathf.Sign(transform.localScale.x));
-        /*poolimg*/
     }
 
-    private int FindFireballs() {
-        for (int i = 0; i < fireballs.Length; i++) {
-            if (!fireballs[i].activeInHierarchy)
-                return i;
-        }
-        return 0;
-    }
 }

@@ -24,7 +24,6 @@ public class DeathScript : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             player.transform.position = startPoint.transform.position;
-
         }
     }
 
